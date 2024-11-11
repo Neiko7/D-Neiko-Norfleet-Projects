@@ -11,7 +11,6 @@ import pandas as pd
 import tkinter as tk  # Importing tkinter for the GUI
 from tkinter import simpledialog  # Importing simpledialog for input prompts
 
-
 # Set the environment variable for TensorFlow if used in future
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
@@ -20,6 +19,21 @@ logging.basicConfig(filename='logs/neinos.log',
                     level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
+# Retrieve the Red and Blue Team passwords from environment variables
+red_team_password = os.getenv("RED_TEAM_PASSWORD")
+blue_team_password = os.getenv("BLUE_TEAM_PASSWORD")
+
+# Example usage in authentication logic
+def authenticate_team(team, password):
+    if team == "red" and password == red_team_password:
+        print("Red Team access granted.")
+    elif team == "blue" and password == blue_team_password:
+        print("Blue Team access granted.")
+    else:
+        print("Authentication failed.")
+
+# Example usage
+authenticate_team("red", "your_input_password")  # Replace with actual input password in use
 
 class DataAccessLayer:
     @staticmethod
